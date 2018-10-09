@@ -19,11 +19,21 @@ local textObject
 
 -- displays text on the screen at position x = 500 and y = 5 with
 -- a deafult font style and font size of 50 
-textObject = display.newText( "Hello, Jonathan Kene", 240, 100, nil, 50)
+textObject = display.newText( "Hello, Jonathan Kene", 240, 100, nil, 40)
 
 -- sets the color of the text
 textObject:setTextColor(0, 191, 255)
 
 
+
+-- create a local variable 
+local textObjectSignature
+
+-- displays text on the screen at position x = 400 and y = 5 with
+-- a deafult font style and font size of 30
+textObjectSignature = display.newText( "Created by Jonathan Kene", 240, 200, nil, 30)
+
+-- sets the color of the text
+textObjectSignature:setTextColor(0, 191, 255)
 
 
