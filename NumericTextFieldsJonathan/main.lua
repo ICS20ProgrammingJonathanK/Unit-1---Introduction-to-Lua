@@ -30,7 +30,7 @@ local randomOperator
 	-- generate 2 random numbers between a max. and a min. number
 	randomOperator = math.random(0, 3)
 	randomNumber1 = math.random(0, 12)
-	randomNumber2 = math.random(0, 12)
+	randomNumber2 = math.random(0, 11)
 
 	if (randomOperator == 1) then
 		correctAnswer = randomNumber1 + randomNumber2
