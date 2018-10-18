@@ -24,6 +24,50 @@ local correctAnswer
 local pointsTextObject
 local numberPoints = 0
 local randomOperator
+local gameOver
+
+-- variables for the timer
+local totalSeconds = 5
+local secondsLeft = 5
+local clockText
+local countDownTimer
+
+local lives = 2
+local heart1
+local heart2
+
+local function UpdateTime()
+
+	-- decrement the number of seconds left
+	secondsLeft = secondsLeft -1
+
+	-- display the number of seconds left in the clock object
+	clockText.text = secondsLeft .. ""
+    
+    if (secondsLeft == 0) then
+    	-- reset the number of seconds left in the clock object
+    	secondsLeft = totalSeconds
+    	lives = lives -1
+
+    	if (lives == 2) then
+    		heart2.isVisible = false
+    		gameOver.isVisible = false
+        elseif (lives == 1) then
+        	heart1.isVisible = false
+        	gameOver.isVisible = false
+        elseif (lives == 0) then
+        	gameOver.isVisible = true
+        end
+    end
+end
+
+-- function that calls the timer
+local function StartTimer()
+	-- create countdown timer that loops infinitely
+	countDownTimer = timer.performWithDelay(1000, UpdateTime, 0)
+end
+
+
 
 
 
@@ -34,7 +78,6 @@ local correctSoundChannel
 local wrongSound = audio.loadSound( "Sounds/wrongSound.mp3" ) -- Setting a variable to an mp3 file
 local correctSoundChannel
 local wrongSoundChannel
-
 
  local function AskQuestion()
 	-- generate 2 random numbers between a max. and a min. number
@@ -96,7 +139,9 @@ local function NumericFieldListener(event)
 			incorrectObject.isVisible = false
 			correctSoundChannel = audio.play(correctSound)
 			timer.performWithDelay(2000, hideCorrect)
+			lives = 3
 			numberPoints = numberPoints + 1
+
 			 
 			 -- create increasing points in the text object
 			 pointsTextObject.text = "Points = ".. numberPoints
@@ -105,6 +150,7 @@ local function NumericFieldListener(event)
 	    	incorrectObject.isVisible = true
 	    	wrongSoundChannel = audio.play(wrongSound)
 	    	timer.performWithDelay(2000, hideIncorrect)
+	    	lives = lives - 1
 	    end
 
 	    	event.target.text = ""
@@ -137,6 +183,21 @@ numericField.inputType = "number"
 
 -- add the event listener for the numeric field
 numericField:addEventListener( "userInput", NumericFieldListener )
+
+-- add background image
+local gameOver = display.newImageRect("Images/gameOver.png", 1350, 900)
+gameOver.x = 520
+gameOver.y = 348
+gameOver.isVisible = false
+
+-- create the lives to display on the screen
+heart1 = display.newImageRect("Images/heart.png", 100, 100)
+heart1.x = display.contentWidth * 7 / 8
+heart1.y = display.contentHeight * 1 / 7
+
+heart2 = display.newImageRect("Images/heart.png", 100, 100)
+heart2.x = display.contentWidth * 6 / 8
+heart2.y = display.contentHeight * 1 / 7
 
 -- call the function to ask the question
 AskQuestion()
