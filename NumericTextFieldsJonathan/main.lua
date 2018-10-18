@@ -7,7 +7,7 @@
 -----------------------------------------------------------------------------------------
 
 -- hide the status bar
-display.setStatusBar(display.HiddenstatusBar)
+display.setStatusBar(display.HiddenStatusBar)
 
 -- sets the background colour
 display.setDefault("background", 124/255, 249/255, 199/255)
@@ -26,9 +26,19 @@ local numberPoints = 0
 local randomOperator
 
 
+
+
+-- Correct sound
+local correctSound = audio.loadSound( "Sounds/correctSound.mp3" ) -- Setting a variable to an mp3 file
+local correctSoundChannel
+local wrongSound = audio.loadSound( "Sounds/wrongSound.mp3" ) -- Setting a variable to an mp3 file
+local correctSoundChannel
+local wrongSoundChannel
+
+
  local function AskQuestion()
 	-- generate 2 random numbers between a max. and a min. number
-	randomOperator = math.random(0, 3)
+	randomOperator = math.random(1, 3)
 	randomNumber1 = math.random(0, 12)
 	randomNumber2 = math.random(0, 12)
 
@@ -84,6 +94,7 @@ local function NumericFieldListener(event)
 		if (userAnswer == correctAnswer) then
 			correctObject.isVisible = true
 			incorrectObject.isVisible = false
+			correctSoundChannel = audio.play(correctSound)
 			timer.performWithDelay(2000, hideCorrect)
 			numberPoints = numberPoints + 1
 			 
@@ -92,9 +103,12 @@ local function NumericFieldListener(event)
 	    else
 	    	correctObject.isVisible = false
 	    	incorrectObject.isVisible = true
+	    	wrongSoundChannel = audio.play(wrongSound)
 	    	timer.performWithDelay(2000, hideIncorrect)
-
 	    end
+
+	    	event.target.text = ""
+
 	end
 end
 
@@ -106,10 +120,6 @@ pointsTextObject:setTextColor(155/255, 42/255, 198/255)
 -- displays a question and sets the colour
 questionObject = display.newText( "", display.contentWidth/3, display.contentHeight/2, nil, 50 )
 questionObject:setTextColor(155/255, 42/255, 198/255)
-
--- displays a question and sets the colour
-questionObject2 = display.newText( "", display.contentWidth/3, display.contentHeight/2, nil, 50 )
-questionObject2:setTextColor(155/255, 42/255, 198/255)
 
 -- create the correct text object and make it invisble
 correctObject = display.newText( "Correct!", display.contentWidth/2, display.contentHeight*2/3, nil, 50 )

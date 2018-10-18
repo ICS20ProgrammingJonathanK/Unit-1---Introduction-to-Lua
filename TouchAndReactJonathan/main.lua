@@ -5,11 +5,18 @@
 -- This program does something when I click on the button.
 -----------------------------------------------------------------------------------------
 
--- set background colour
-display.setDefault ("background", 153/255, 204/255, 255/255)
 
 -- hide status bar
 display.setStatusBar(display.HiddenStatusBar)
+
+-- set background colour
+display.setDefault ("background", 153/255, 204/255, 255/255)
+
+
+local popSound 
+local popSound = audio.loadSound( "Sounds/PopSound.wav" ) -- Setting a variable to an mp3 file
+local popSoundChannel
+
 
 -- create blue button, set its position and make it visible
 local blueButton = display.newImageRect("Images/Fast Button Inactive@2x.png",198, 96)
@@ -31,7 +38,7 @@ textObject:setTextColor (1, 1, 0)
 textObject.isVisible = false
 
 -- create pikachu, set its position and make it invisible
-local pikachu = display.newImageRect("Images/Pikachu.png", 300, 17r0)
+local pikachu = display.newImageRect("Images/Pikachu.png", 300, 170)
 pikachu.x = display.contentWidth/2
 pikachu.y = display.contentHeight/3
 
@@ -47,13 +54,15 @@ local function BlueButtonListener(touch)
 		redButton.isVisible = true
 		textObject.isVisible = true
 		pikachu.isVisible = false
+		popSoundChannel = audio.play(popSound)
+
 	end
 
 	if (touch.phase == "ended") then
 	  blueButton.isVisible = true
 	  redButton.isVisible = false
 	  textObject.isVisible = false
-	  pikachu.isVisible = false
+	  pikachu = false
     end
 end
 
