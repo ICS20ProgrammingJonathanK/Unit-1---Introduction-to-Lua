@@ -47,7 +47,7 @@ local function UpdateTime()
     if (secondsLeft == 0) then
     	-- reset the number of seconds left in the clock object
     	secondsLeft = totalSeconds
-    	lives = lives -1
+    	lives = lives - 1
 
     	if (lives == 2) then
     		heart2.isVisible = false
@@ -56,7 +56,7 @@ local function UpdateTime()
         	heart1.isVisible = false
         	gameOver.isVisible = false
         elseif (lives == 0) then
-        	gameOver.isVisible = true
+            gameOver.isVisible = true
         end
     end
 end
@@ -65,6 +65,18 @@ end
 local function StartTimer()
 	-- create countdown timer that loops infinitely
 	countDownTimer = timer.performWithDelay(1000, UpdateTime, 0)
+end
+ 
+local function UpdateLives()
+	if (lives == 2) then
+    		heart2.isVisible = false
+    		gameOver.isVisible = false
+        elseif (lives == 1) then
+        	heart1.isVisible = false
+        	gameOver.isVisible = false
+        elseif (lives == 0) then
+            gameOver.isVisible = true
+        end
 end
 
 
@@ -139,7 +151,6 @@ local function NumericFieldListener(event)
 			incorrectObject.isVisible = false
 			correctSoundChannel = audio.play(correctSound)
 			timer.performWithDelay(2000, hideCorrect)
-			lives = 3
 			numberPoints = numberPoints + 1
 
 			 
