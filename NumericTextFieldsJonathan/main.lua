@@ -36,10 +36,17 @@ local lives = 2
 local heart1
 local heart2
 
+-- Correct sound
+local correctSound = audio.loadSound( "Sounds/correctSound.mp3" ) -- Setting a variable to an mp3 file
+local correctSoundChannel
+local wrongSound = audio.loadSound( "Sounds/wrongSound.mp3" ) -- Setting a variable to an mp3 file
+local correctSoundChannel
+local wrongSoundChannel
+
 local function UpdateTime()
 
 	-- decrement the number of seconds left
-	secondsLeft = secondsLeft -1
+	secondsLeft = secondsLeft - 1
 
 	-- display the number of seconds left in the clock object
 	clockText.text = secondsLeft .. ""
@@ -77,19 +84,8 @@ local function UpdateLives()
         elseif (lives == 0) then
             gameOver.isVisible = true
         end
+    
 end
-
-
-
-
-
-
--- Correct sound
-local correctSound = audio.loadSound( "Sounds/correctSound.mp3" ) -- Setting a variable to an mp3 file
-local correctSoundChannel
-local wrongSound = audio.loadSound( "Sounds/wrongSound.mp3" ) -- Setting a variable to an mp3 file
-local correctSoundChannel
-local wrongSoundChannel
 
  local function AskQuestion()
 	-- generate 2 random numbers between a max. and a min. number
@@ -100,27 +96,22 @@ local wrongSoundChannel
 	if (randomOperator == 1) then
 		correctAnswer = randomNumber1 + randomNumber2
 
-
     	-- create question in the text object
     	questionObject.text = randomNumber1 .. " + " .. randomNumber2 .. " = "
 
 	elseif (randomOperator == 2) then
 		correctAnswer = randomNumber1 - randomNumber2
 
-
     	-- create question in the text object
     	questionObject.text = randomNumber1 .. " - " .. randomNumber2 .. " = "
-   
  	
      elseif (randomOperator == 3) then
  		correctAnswer = randomNumber1 * randomNumber2
-
 
     	-- create question in the text object
     	questionObject.text = randomNumber1 .. " * " .. randomNumber2 .. " = "
     end
 end
-
 
 local function hideCorrect()
 	correctObject.isVisible = false
@@ -162,6 +153,8 @@ local function NumericFieldListener(event)
 	    	wrongSoundChannel = audio.play(wrongSound)
 	    	timer.performWithDelay(2000, hideIncorrect)
 	    	lives = lives - 1
+	    	-- call the function to decrease lives
+	    	UpdateLives()
 	    end
 
 	    	event.target.text = ""
