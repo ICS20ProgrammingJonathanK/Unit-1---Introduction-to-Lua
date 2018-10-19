@@ -22,6 +22,10 @@ local blueGirlHeight = blueGirl.height
 local alreadyTouchedYellowGirl = false
 local alreadyTouchedBlueGirl = false
 
+local boingSound
+local boingSound = audio.loadSound( "Sounds/boingSoundEffect.mp3" ) -- Setting a variable to an mp3 file
+local boingSoundChannel
+
 -- set the initial x and y position of myImage
 yellowGirl.x = 400
 yellowGirl.y = 500
@@ -50,6 +54,7 @@ local function BlueGirlListener(touch)
 	if (touch.phase == "ended") then
 	    alreadyTouchedBlueGirl = false
 	    alreadyTouchedYellowGirl = false
+	    boingSoundChannel = audio.play(boingSound)
 	end
 end  
 
