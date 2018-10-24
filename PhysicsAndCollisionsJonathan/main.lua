@@ -49,3 +49,12 @@ bkg.y = display.contentCenterY
 
 -- send to back
 bkg:toBack()
+
+----------------------------------------------------------------------
+-- FUNCTIONS
+----------------------------------------------------------------------
+
+-- create the first ball
+local function firstBall()
+	-- creating first ball
+	local ball
