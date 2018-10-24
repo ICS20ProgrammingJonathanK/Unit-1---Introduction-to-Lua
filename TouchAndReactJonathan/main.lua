@@ -66,5 +66,21 @@ local function BlueButtonListener(touch)
     end
 end
 
+-- Function: BlueButtonListener
+-- Input: touch listener
+-- Output: none
+-- Description: when blue button is clicked, it will make the text appear with the red button.
+-- and make the blue button disappear
+local function BlueButtonListener(touch)
+	if (touch.phase == "ended") then
+	  blueButton.isVisible = true
+	  redButton.isVisible = false
+	  textObject.isVisible = false
+	  pikachu = true 
+    end
+end
+
+
+
 -- add the respective listeners to each object
 blueButton:addEventListener("touch", BlueButtonListener)

@@ -35,8 +35,13 @@ local randomOperator
 local gameOver
 
 -- variables for the timer
+<<<<<<< HEAD
 local totalSeconds = 15
 local secondsLeft = 15
+=======
+local totalSeconds = 10
+local secondsLeft = 10
+>>>>>>> ae16d782c11e377c91d9e2e48e955b6ea3e37dfe
 local clockText
 local countDownTimer
 
@@ -75,8 +80,9 @@ local function UpdateLives()
     elseif (lives == 0) then
     	heart1.isVisible = false
         gameOver.isVisible = true
-        timer.cancel(countDownTimer )
+        timer.cancel(countDownTimer)
         numericField.isVisible = false
+        wrongSoundChannel = audio.play(wrongSound)
     end 
 end
 
@@ -158,11 +164,15 @@ local function NumericFieldListener(event)
 			correctObject.isVisible = true
 			incorrectObject.isVisible = false
 			correctSoundChannel = audio.play(correctSound)
+<<<<<<< HEAD
 			timer.performWithDelay(1000, hideCorrect, 0)
+=======
+			timer.performWithDelay(2000, hideCorrect, 0)
+>>>>>>> ae16d782c11e377c91d9e2e48e955b6ea3e37dfe
 			numberPoints = numberPoints + 1
+			secondsLeft = totalSeconds + 1
 
-			 
-			 -- create increasing points in the text object
+		     -- create increasing points in the text object
 			 pointsTextObject.text = "Points = ".. numberPoints
 	    else
 	    	correctObject.isVisible = false
@@ -170,6 +180,7 @@ local function NumericFieldListener(event)
 	    	wrongSoundChannel = audio.play(wrongSound)
 	    	timer.performWithDelay(2000, hideIncorrect)
 	    	lives = lives - 1
+	    	secondsLeft = totalSeconds + 1
 
 	    -- call the function to decrease lives
 	    	UpdateLives()
