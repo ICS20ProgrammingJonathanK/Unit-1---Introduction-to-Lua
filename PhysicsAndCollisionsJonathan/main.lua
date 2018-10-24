@@ -30,11 +30,22 @@ local ground = display.newImageRect("Images/ground.png", 5008, 50)
  physics.addBody(ground, "static", {friction = 0., bounce = 0.3})
 
  local beam = display.newImageRect("Images/beam.png", 508, 50)
- beam.x = 515
- beam.y = 200
+ beam.x = 115
+ beam.y = 600
 
  -- rotate the bame -60 degrees so its on an angle
  beam:rotate(45)
 
  -- send it to the back layer
  beam:toBack()
+
+ -- add to physics
+ physics.addBody(beam, "static", {friction = 0.5, bounce = 0.3})
+
+-- set the x and y position
+local bkg = display.newImageRect("Images/bkg.png", 2049, 1593)
+bkg.x = display.contentCenterX
+bkg.y = display.contentCenterY
+
+-- send to back
+bkg:toBack()
