@@ -35,8 +35,8 @@ local randomOperator
 local gameOver
 
 -- variables for the timer
-local totalSeconds = 5
-local secondsLeft = 5
+local totalSeconds = 15
+local secondsLeft = 15
 local clockText
 local countDownTimer
 
@@ -158,7 +158,7 @@ local function NumericFieldListener(event)
 			correctObject.isVisible = true
 			incorrectObject.isVisible = false
 			correctSoundChannel = audio.play(correctSound)
-			timer.performWithDelay(2000, hideCorrect)
+			timer.performWithDelay(1000, hideCorrect, 0)
 			numberPoints = numberPoints + 1
 
 			 
@@ -233,11 +233,11 @@ heart2.x = display.contentWidth * 6 / 8
 heart2.y = display.contentHeight * 1 / 7
 
 heart3 = display.newImageRect("Images/heart.png", 100, 100)
-heart3.x = display.contentWidth * 6 / 8
+heart3.x = display.contentWidth * 5 / 8
 heart3.y = display.contentHeight * 1 / 7
 
 heart4 = display.newImageRect("Images/heart.png", 100, 100)
-heart4.x = display.contentWidth * 6 / 8
+heart4.x = display.contentWidth * 4 / 8
 heart4.y = display.contentHeight * 1 / 7
 
 ---------------------------------------------------
