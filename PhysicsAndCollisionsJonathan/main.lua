@@ -18,23 +18,37 @@ physics.start()
 -- OBJECTS
 -------------------------------------------------------------------------
 
--- display ground
-local ground = display.newImageRect("Images/ground.png", 5008, 50)
+-- create bkg
+ local bkg = display.newImageRect("Images/bkg.png", 104, 1592)
+ bkg.x = 510
+ bkg.y = 750
+ 
+ -- display ground
+ local ground = display.newImageRect("Images/ground.png", 5008, 50)
  ground.x = 515
  ground.y = 750
 
  -- change the width to be the same as the screen
  ground.width = display.contentWidth
-
+ 
  -- add to physics
  physics.addBody(ground, "static", {friction = 0., bounce = 0.3})
 
- local beam = display.newImageRect("Images/beam.png", 508, 50)
- beam.x = 515
- beam.y = 200
+local beam = display.newImageRect("Images/beam.png", 508, 50)
+beam.x = 500
+beam.y = 500
+
 
  -- rotate the bame -60 degrees so its on an angle
  beam:rotate(45)
 
  -- send it to the back layer
  beam:toBack()
+
+ -- add to physics
+
+ 
+
+ 
+
+
