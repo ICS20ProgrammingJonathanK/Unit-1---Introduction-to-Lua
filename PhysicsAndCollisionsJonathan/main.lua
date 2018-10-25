@@ -34,10 +34,15 @@ physics.start()
  -- add to physics
  physics.addBody(ground, "static", {friction = 0., bounce = 0.3})
 
+<<<<<<< HEAD
 local beam = display.newImageRect("Images/beam.png", 508, 50)
 beam.x = 500
 beam.y = 500
 
+=======
+ local beam = display.newImageRect("Images/beam.png", 508, 50)
+ beam.x = 115
+ beam.y = 600
 
  -- rotate the bame -60 degrees so its on an angle
  beam:rotate(45)
@@ -46,9 +51,23 @@ beam.y = 500
  beam:toBack()
 
  -- add to physics
-
  
+ physics.addBody(beam, "static", {friction = 0.5, bounce = 0.3})
 
- 
+-- set the x and y position
+local bkg = display.newImageRect("Images/bkg.png", 2049, 1593)
+bkg.x = display.contentCenterX
+bkg.y = display.contentCenterY
 
+-- send to back
+bkg:toBack()
+
+----------------------------------------------------------------------
+-- FUNCTIONS
+----------------------------------------------------------------------
+
+-- create the first ball
+local function firstBall()
+	-- creating first ball
+	local ball
 
