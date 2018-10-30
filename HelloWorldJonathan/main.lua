@@ -8,6 +8,10 @@
 -- print "Hello, World" to the command terminal
 print ("***Helloooooooooooooo!")
 
+local boing
+local boing = audio.loadSound( "Sounds/boing.mp3" ) -- Setting a variable to an mp3 file
+local boingChannel
+
 -- hide the status bar
 display.setStatusBar(display.HiddenStatusBar)
 
@@ -21,10 +25,10 @@ local textObject
 -- a deafult font style and font size of 50 
 textObject = display.newText( "Hello, Jonathan Kene", 240, 100, nil, 40)
 
+popSoundChannel = audio.play(popSound)
+
 -- sets the color of the text
 textObject:setTextColor(0, 191, 255)
-
-
 
 -- create a local variable 
 local textObjectSignature
@@ -35,5 +39,4 @@ textObjectSignature = display.newText( "Created by Jonathan Kene", 240, 200, nil
 
 -- sets the color of the text
 textObjectSignature:setTextColor(0, 191, 255)
-
 

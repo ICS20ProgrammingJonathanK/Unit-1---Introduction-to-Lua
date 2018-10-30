@@ -6,6 +6,10 @@
 -- hide the status bar
 display.setStatusBar(display.HiddenStatusBar)
 
+local correctSound
+local correctSound = audio.loadSound( "Sounds/correctSound.mp3" ) -- Setting a variable to an mp3 file
+local correctSoundChannel
+
 -- global variables
 scrollSpeed =  3
 
@@ -31,6 +35,8 @@ local function MoveShip(event)
 	beetleship.x = beetleship.x + scrollSpeed
 	-- change the transparency of the ship every time it moves so that it fades out
 	 beetleship.alpha = beetleship.alpha + 0.01
+  correctSoundChannel = audio.play(correctSound)
+
 end
 
 -- MoveShip will be called over and over again
