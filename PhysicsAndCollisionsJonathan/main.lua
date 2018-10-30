@@ -18,17 +18,28 @@ physics.start()
 -- OBJECTS
 -------------------------------------------------------------------------
 
--- display ground
-local ground = display.newImageRect("Images/ground.png", 5008, 50)
+-- create bkg
+ local bkg = display.newImageRect("Images/bkg.png", 104, 1592)
+ bkg.x = 510
+ bkg.y = 750
+ 
+ -- display ground
+ local ground = display.newImageRect("Images/ground.png", 5008, 50)
  ground.x = 515
  ground.y = 750
 
  -- change the width to be the same as the screen
  ground.width = display.contentWidth
-
+ 
  -- add to physics
  physics.addBody(ground, "static", {friction = 0., bounce = 0.3})
 
+<<<<<<< HEAD
+local beam = display.newImageRect("Images/beam.png", 508, 50)
+beam.x = 500
+beam.y = 500
+
+=======
  local beam = display.newImageRect("Images/beam.png", 508, 50)
  beam.x = 115
  beam.y = 600
@@ -51,6 +62,7 @@ local longBeam = display.newImageRect("Images/longBeam.png", 1008, 50)
  longBeam:rotate(90)
 
  -- add to physics
+ 
  physics.addBody(beam, "static", {friction = 0.5, bounce = 0.3})
 
 local longBeam = display.newImageRect("Images/longBeam.png", 1500, 50)
@@ -94,6 +106,7 @@ bkg:toBack()
 
 -- create the first ball
 local function firstBall()
+<<<<<<< HEAD
 	
 	local superBall1 = display.newImage("Images/superBall1.png", 100, 100)
 
@@ -149,3 +162,8 @@ timer.performWithDelay( 0, firstBall)
 timer.performWithDelay( 500, secondBall)
 timer.performWithDelay( 700, thirdBall)
 timer.performWithDelay( 900, fourthBall)
+=======
+	-- creating first ball
+	local ball
+
+>>>>>>> d14439adf822b6df6790f5fba012902144691b09

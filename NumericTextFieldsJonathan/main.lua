@@ -35,13 +35,10 @@ local randomOperator
 local gameOver
 
 -- variables for the timer
-<<<<<<< HEAD
 local totalSeconds = 15
 local secondsLeft = 15
-=======
 local totalSeconds = 10
 local secondsLeft = 10
->>>>>>> ae16d782c11e377c91d9e2e48e955b6ea3e37dfe
 local clockText
 local countDownTimer
 
@@ -164,11 +161,8 @@ local function NumericFieldListener(event)
 			correctObject.isVisible = true
 			incorrectObject.isVisible = false
 			correctSoundChannel = audio.play(correctSound)
-<<<<<<< HEAD
 			timer.performWithDelay(1000, hideCorrect, 0)
-=======
 			timer.performWithDelay(2000, hideCorrect, 0)
->>>>>>> ae16d782c11e377c91d9e2e48e955b6ea3e37dfe
 			numberPoints = numberPoints + 1
 			secondsLeft = totalSeconds + 1
 
