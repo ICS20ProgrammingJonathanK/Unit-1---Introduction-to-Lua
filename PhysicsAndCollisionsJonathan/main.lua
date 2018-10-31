@@ -34,12 +34,11 @@ physics.start()
  -- add to physics
  physics.addBody(ground, "static", {friction = 0., bounce = 0.3})
 
-<<<<<<< HEAD
 local beam = display.newImageRect("Images/beam.png", 508, 50)
 beam.x = 500
 beam.y = 500
 
-=======
+
  local beam = display.newImageRect("Images/beam.png", 508, 50)
  beam.x = 115
  beam.y = 600
@@ -106,7 +105,6 @@ bkg:toBack()
 
 -- create the first ball
 local function firstBall()
-<<<<<<< HEAD
 	
 	local superBall1 = display.newImage("Images/superBall1.png", 100, 100)
 
@@ -162,8 +160,6 @@ timer.performWithDelay( 0, firstBall)
 timer.performWithDelay( 500, secondBall)
 timer.performWithDelay( 700, thirdBall)
 timer.performWithDelay( 900, fourthBall)
-=======
+
 	-- creating first ball
 	local ball
-
->>>>>>> d14439adf822b6df6790f5fba012902144691b09
