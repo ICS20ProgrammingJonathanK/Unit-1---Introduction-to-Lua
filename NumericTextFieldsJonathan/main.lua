@@ -189,7 +189,7 @@ end
 -- OBJECT CREATION
 -------------------------------------------------
 
--- create points box adn make it visible
+-- create points box and make it visible
 pointsTextObject = display.newText( "Points = ".. numberPoints, 800, 385, nil, 50 )
 pointsTextObject:setTextColor(155/255, 42/255, 198/255)
 
